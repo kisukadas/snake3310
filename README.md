@@ -22,4 +22,4 @@ No build step required! Just edit the files and refresh your browser.
 
 ## License
 
-MIT
+
