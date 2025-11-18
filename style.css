@@ -1,0 +1,149 @@
+:root {
+    --nokia-bg: #C7F0D8;
+    --nokia-fg: #43523D;
+    --case-color: #333399; /* Classic dark blue/grey nokia color */
+    --screen-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'VT323', monospace;
+}
+
+.phone-case {
+    background-color: var(--case-color);
+    width: 360px;
+    height: 680px;
+    border-radius: 40px 40px 60px 60px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 
+        -5px -5px 15px rgba(255,255,255,0.2),
+        10px 10px 30px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+/* The grey bezel around the screen */
+.screen-bezel {
+    background-color: #666;
+    padding: 15px 15px 5px 15px;
+    border-radius: 10px 10px 25px 25px;
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.screen {
+    background-color: var(--nokia-bg);
+    width: 100%;
+    height: 230px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    box-shadow: var(--screen-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2px;
+    position: relative;
+}
+
+/* Scanline effect */
+.screen::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+.game-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+    color: var(--nokia-fg);
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 2px solid var(--nokia-fg);
+    margin-bottom: 2px;
+    z-index: 1;
+}
+
+canvas {
+    image-rendering: pixelated;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.brand {
+    color: #ccc;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.controls {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.d-pad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.middle-row {
+    display: flex;
+    gap: 40px;
+}
+
+.btn {
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(145deg, #ddd, #bbb);
+    border: none;
+    border-radius: 10px; /* Oval shape */
+    box-shadow: 
+        2px 2px 5px rgba(0,0,0,0.3),
+        inset 1px 1px 2px rgba(255,255,255,0.8);
+    cursor: pointer;
+    position: relative;
+}
+
+.btn:active {
+    background: #bbb;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+    transform: translateY(1px);
+}
+
+/* Shape tweaks for specific buttons to look more like a phone keypad layout */
+.btn.up { border-radius: 15px 15px 5px 5px; }
+.btn.down { border-radius: 5px 5px 15px 15px; }
+.btn.left { border-radius: 15px 5px 5px 15px; }
+.btn.right { border-radius: 5px 15px 15px 5px; }
